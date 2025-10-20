@@ -187,14 +187,14 @@ Compare and contrast the classes Happy and Sad.
 ### 2.6. Where is the Sense(Hat) in the code?
 
 1. Which class(es) utilize the functionality of the SenseHat?
-   > Your answer here
-   >
+   > Smiley class, and Happy and Sad by inheritance of Smiley class also utilise SenseHat's functionality.  
+
 2. Which of these classes directly interact with the SenseHat functionalities?
-   > Your answer here
+   > Only the Smiley class is directly interact with the SenseHat functionalities. It is the only class that creates an instance of the SenseHat object which is self.sense_hat and methods are set_pixels and low_light. The subclass Happy and Sad inherit from Smiley.
    >
 3. Discuss the hiding of the SenseHAT in terms of encapsulation (100-200 Words)
-   > Your answer here
-   >
+   > Encapsulation is OOP principle which internal data and methods are hidden from the outside world. 
+   > In this project, the SenseHat object is created and kept inside the Smiley class. No other part of the program, like the Happy or Sad classes, ever touches the sense_hat object directly. Instead, they interact with the display by using public methods provided by Smiley, like show(). This is a good design because it hides the complex details. If the SenseHat hardware or its code ever changed, we would only need to update the code inside the Smiley class. The rest of the program would not need to be changed, making the code easier to maintain and more robust.
 
 ### 2.7. Sad Smileys Can’t Blink (Or Can They?)
 
@@ -204,23 +204,20 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 1. Does the code's author believe that every `Smiley` should be able to blink? Explain.
 
-> Your answer here
->
+> No, the author doesn't believe every Smiley should blink. They created a separate Blinkable Abstract Base Class (ABC) to make blinking an optional interface. This means classes must explicitly inherit from Blinkable to gain this special capability, rather than it being a default feature.
 
 2. For those smileys that blink, does the author expect them to blink in the same way? Explain.
 
-> Your answer here
->
+> No, the author expects them to blink differently. The blink method in the Blinkable class is an @abstractmethod. This forces any subclass to provide its own unique implementation, allowing for different blinking styles for different types of smileys.
 
 3. Referring to the implementation of blink in the Happy and Sad Smiley classes, give a brief explanation of what polymorphism is.
 
-> Your answer here
->
+> Polymorphism means "many forms." In programming, it's the ability for different objects to respond to the same method call in their own unique ways. For example, both Happy and Sad objects could respond to the .blink() call, but each could perform a different blinking animation. 
 
 4. How is inheritance used in the blink method, and why is it important for polymorphism?
 
-> Your answer here
->
+> Inheritance is used when a class like Happy inherits from Blinkable. This is important for polymorphism because it enforces a contract. The Blinkable interface guarantees that any object inheriting from it must have a blink method. This guarantee lets us treat different objects in a uniform way, confidently calling .blink() on any Blinkable object, knowing the method exists, even if each object performs the action differently.
+
 1. **Implement Blink in Sad Class:**
 
    - Create a new method called `blink` within the Sad class. Ensure you use the same method signature as in the Happy class:
@@ -238,11 +235,11 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 Include a screenshot of the sad smiley or the modified `main.py`:
 
-![Sad Smiley Blinking](screenshots/sad_blinking.png)
+![alt text](AdobePhotoshopExpress_3f6003f9f2e54d20b1cb484c8d3f7a27_CopyEdited.png)
 
 - Observe and document the Sad smiley as it blinks its eyes. Describe any adjustments or issues encountered during implementation.
 
-  > Your answer here
+  > When the modified main.py is run the SenseHat window display a sad smiley face. After a second pause the smiley's eyes close and then reopen which successfully demonstrating the new blinking function. Time module had to be imported into sad.py to enable the time.sleep() function used in the blink method. 
 
   ### 2.8. If It Walks Like a Duck…
 
@@ -250,23 +247,23 @@ Include a screenshot of the sad smiley or the modified `main.py`:
 
   1. **Class Type Analysis:** What kind of class is `Blinkable`? Inspect its superclass for clues about its classification.
 
-     > Your answer here
+     > Blinkable is an Abstract Base Class (ABC). We know this because it inherits from the ABC class (class Blinkable(ABC):) and uses the @abstractmethod decorator.  
 
   2. **Class Implementation:** `Blinkable` is a class intended to be implemented by other classes. What generic term describes this kind of class, which is designed for implementation by others? **Clue**: Notice the lack of any concrete implementation and the naming convention.
 
-  > Your answer here
+  > The generic term for this type of class, which defines a contract for other classes to implement, is an interface.
 
   3. **OO Principle Identification:** Regarding your answer to question (2), which Object-Oriented (OO) principle does this represent? Choose from the following and justify your answer in 1-2 sentences: Abstraction, Polymorphism, Inheritance, Encapsulation.
 
-  > Your answer here
+  > This represents the principle of Abstraction. The Blinkable class defines what a blinkable object must do (it must have a blink method) without specifying how it should do it.
 
   4. **Implementation Flexibility:** Explain why you could grant the Sad Smiley a blinking feature similar to the Happy Smiley's implementation, even without directly using `Blinkable`.
 
-  > Your answer here
+  > You could give the Sad smiley a blinking feature without it inheriting from Blinkable because Python is a dynamically typed language. Python doesn't check for formal inheritance. As long as the Sad object has a method named blink when the code tries to call it, the program will run it successfully.
 
   5. **Concept and Language Specificity:** In relation to your response to question (4), what is this capability known as, and why is it feasible in Python and many other dynamically typed languages but not in most statically typed programming languages like C#? **Clue** This concept is hinted at in the title of this section.
 
-  > Your answer here
+  > This capability is known as Duck Typing. The name comes from the saying: "If it walks like a duck and it quacks like a duck, then it must be a duck." In Python, an object's suitability is determined by having the right methods (like .blink()), not by its formal class type. This is possible in dynamically typed languages where checks happen at runtime. In statically typed languages like C#, the compiler would check for a formal interface and cause an error before the code could even run.
 
   ***
 

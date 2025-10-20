@@ -1,5 +1,5 @@
 from smiley import Smiley
-
+import time
 
 class Sad(Smiley):
     def __init__(self):
@@ -28,3 +28,16 @@ class Sad(Smiley):
             else:
                 eyes = self.YELLOW
             self.pixels[pixel] = eyes
+
+    # --- New blink method added below ---
+    def blink(self, delay=0.25):
+        """
+        Blinks the smiley's eyes once
+
+        :param delay: Delay between blinks (in seconds)
+        """
+        self.draw_eyes(wide_open=False)  # Close the eyes
+        self.show()
+        time.sleep(delay)
+        self.draw_eyes(wide_open=True)   # Open the eyes
+        self.show()
