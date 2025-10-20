@@ -124,19 +124,19 @@ python3 main.py
 
 1. What code style is used in the code? Is it likely to be the same as the code style used in the SenseHat? Give to reasons as to why/why not:
 
-> Your answer here
+
 > The code is writen using PEP8, and it is likely to be the same in the SenseHat. The reason of using PEP8 due to its readability and consistency. 
 
 2. List three aspects of this convention you see applied in the code.
 
-> Your answer here
+
 > Naming convention which the code uses Pascal case for class names and snake_case for functions, methods and variables
 > Docstrings
 > Constant in smiley class
 
 3. Give two examples of organizational documentation in the code.
 
-> Your answer here
+
 > Module docstring
 > Class docstring
 
@@ -158,12 +158,12 @@ python3 main.py
 
 2. Explain the concept of abstraction, giving an example from the project (note "implementing an ABC" is **not** in itself an example of abstraction). (Max 150 words)
 
-> Your answer here
+
 > Abstraction is the principle of hiding complex implementation details while exposing only the essential features. An excellent example in this project is the show() method in the Smiley class. When we call smiley.show(), the smiley appears on the screen. As users of the Smiley object, we don't need to know about the underlying SenseHat object or the set_pixels() method it calls. All that complexity is hidden away behind a simple interface. We only need to know what the method does, not how it does it. 
 
 3. What is the name of the process of deriving from base classes? What is its purpose in this project? (Max 150 words)
 
-> Your answer here
+
 > The process of deriving classes from base classes is called inheritance. Its main purpose in this project is to reuse code and create a logical structure. Both the Happy and Sad classes inherit from Smiley. This means they automatically get all of Smiley's features—like the yellow circle, the pixels grid, and the show() method—without having to rewrite that common code. They can then add their own unique features, like a smiling or frowning mouth. This creates a clear "is-a" relationship (e.g., a Happy face is a type of Smiley), making the code more organized and easier to maintain.
 
 ### 2.5. Compare and contrast classes
@@ -171,17 +171,18 @@ python3 main.py
 Compare and contrast the classes Happy and Sad.
 
 1. What is the key difference between the two classes?
-   > Your answer here
-   >
+   > The key difference is class Happy inherit from Blinkable and used a blink() method, class Sad does not. 
+   
 2. What are the key similarities?
-   > Your answer here
-   >
+   > The main similarity is that both classes inherit from the Smiley class. 
+   > They both start with the same basic yellow circle pixel grid which is super().__init__().
+   > They both having similar structure such as __init__ and draw_mouth methods to shape its smiley face.
+
 3. What difference stands out the most to you and why?
-   > Your answer here
-   >
+   > The difference that stands out the most is the inheritance of the Blinkable class and blink() method that given a new behavior or capability to the smiley face
+   
 4. How does this difference affect the functionality of these classes
-   > Your answer here
-   >
+   > This difference directly affects the available functionality. You can call the .blink() method on an instance of Happy to trigger a blinking animation. However, if you try to call .blink() on an instance of Sad, the program will raise an AttributeError because the Sad class does not have this method.  
 
 ### 2.6. Where is the Sense(Hat) in the code?
 
