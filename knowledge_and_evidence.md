@@ -102,35 +102,43 @@ python3 main.py
 5. Examining `smiley.py`, provide an example of a class variable and an instance variable (attribute). Explain **why** one is defined as a class variable and the other as an instance variable.
 
 > Your answer here
->
+> Class variable: YELLOW, BLANK
+> Instance variable: self.sense_hat, self.pixels
+> Class variable can be shared by all objects or instances that are created from that class, which YELLOW and BLANK is being used for self.pixel(instance variable).
+> Instance variable is owned by each instance of the class such as self.pixels that is owned by instance self, and used to store data that is specific for the instance.
 
 6. Examine `happy.py`, and identify the constructor (initializer) for the `Happy` class:
    1. What is the purpose of a constructor (in general) and this one (in particular)?
 
    > Your answer here
-   >
+   > A constructor is a special method that automatically runs to initialize a new object when it's created. Its main job is to set up the object's starting properties and state.
+   > In this case, the Happy class's constructor is used to create a complete "happy smiley." It does this by first building a generic smiley face and then adding the specific mouth and eyes that make it look happy.
 
    2. What statement(s) does it execute (consider the `super` call), and what is the result?
 
    > Your answer here
-   >
+   > The constructor execute three statements super().__init__(), self.draw_mouth(), self.draw_eyes()
+   > the result is yellow happy face ready to displayed
 
 ### 2.3. Code style
 
 1. What code style is used in the code? Is it likely to be the same as the code style used in the SenseHat? Give to reasons as to why/why not:
 
 > Your answer here
->
+> The code is writen using PEP8, and it is likely to be the same in the SenseHat. The reason of using PEP8 due to its readability and consistency. 
 
 2. List three aspects of this convention you see applied in the code.
 
 > Your answer here
->
+> Naming convention which the code uses Pascal case for class names and snake_case for functions, methods and variables
+> Docstrings
+> Constant in smiley class
 
 3. Give two examples of organizational documentation in the code.
 
 > Your answer here
->
+> Module docstring
+> Class docstring
 
 ### 2.4. Identifying and understanding classes
 
@@ -140,20 +148,23 @@ python3 main.py
   
   Use the following table for your answers:
 
-| Class Name | Super or Sub? | Direct parent(s) |
-| ---------- | ------------- | ---------------- |
-| NotReal    | Sub           | NotRealParent    |
-|   ...      |   ...         |      ...         |
+| Class Name | Super or Sub? | Direct parent(s)  |
+| ---------- | ------------- | ----------------  |
+| NotReal    | Sub           | NotRealParent     |
+| Smiley     | Super         | object            |
+| Happy      | Sub           | Smiley, Blinkable |
+| Sad        | Sub           | Smiley            |
+| Blinkable  | Super         | ABC               |
 
 2. Explain the concept of abstraction, giving an example from the project (note "implementing an ABC" is **not** in itself an example of abstraction). (Max 150 words)
 
 > Your answer here
->
+> Abstraction is the principle of hiding complex implementation details while exposing only the essential features. An excellent example in this project is the show() method in the Smiley class. When we call smiley.show(), the smiley appears on the screen. As users of the Smiley object, we don't need to know about the underlying SenseHat object or the set_pixels() method it calls. All that complexity is hidden away behind a simple interface. We only need to know what the method does, not how it does it. 
 
 3. What is the name of the process of deriving from base classes? What is its purpose in this project? (Max 150 words)
 
 > Your answer here
->
+> The process of deriving classes from base classes is called inheritance. Its main purpose in this project is to reuse code and create a logical structure. Both the Happy and Sad classes inherit from Smiley. This means they automatically get all of Smiley's features—like the yellow circle, the pixels grid, and the show() method—without having to rewrite that common code. They can then add their own unique features, like a smiling or frowning mouth. This creates a clear "is-a" relationship (e.g., a Happy face is a type of Smiley), making the code more organized and easier to maintain.
 
 ### 2.5. Compare and contrast classes
 
