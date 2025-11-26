@@ -53,7 +53,7 @@ Address the following tasks and questions based on the code provided in this rep
 3. Run the project locally by executing the `main.py` file
 4. Evidence this by providing screenshots of the project directory structure and the output of the `main.py` file
 
-![Local Execution (INSERT YOUR SCREENSHOT)](screenshots/CREATE_A_SCREENSHOT_OF_YOUR_local_setup.png)
+![Local Execution (INSERT YOUR SCREENSHOT)](c:\Users\limch\AppData\Local\Packages\AdobeSystemsIncorporated.AdobePhotoshopExpress_ynb6jyjzte8ga\LocalState\Share\Images\AdobePhotoshopExpress_cfbb170c24e2479a825547c81862a41c_CopyEdited.png)
 
 If you are running on a Raspberry Pi, you can use the following command to run the project and then screenshot the result:
 
@@ -235,7 +235,7 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 Include a screenshot of the sad smiley or the modified `main.py`:
 
-![alt text](AdobePhotoshopExpress_3f6003f9f2e54d20b1cb484c8d3f7a27_CopyEdited.png)
+![alt text](c:\Users\limch\AppData\Local\Packages\AdobeSystemsIncorporated.AdobePhotoshopExpress_ynb6jyjzte8ga\LocalState\Share\Images\AdobePhotoshopExpress_02f2633d1b554561a57b467e69a1d525_CopyEdited.png)
 
 - Observe and document the Sad smiley as it blinks its eyes. Describe any adjustments or issues encountered during implementation.
 
@@ -276,19 +276,26 @@ Include a screenshot of the sad smiley or the modified `main.py`:
   1. **Defined Colors and Their Location:**
 
      1. Which colors are defined and in which class(s)?
-        > Your answer here
+        > The colors WHITE, GREEN, RED, YELLOW, and BLANK are all defined as class variables within the Smiley class in the smiley.py file.
      2. What type of variables hold these colors? Are the values expected to change during the program's execution? Explain your answer.
-        > Your answer here
+        > The colors are held in class variables. Their values are not expected to change during the program's execution.
      3. Add the color blue to the appropriate class using the appropriate format and values.
+        > class Smiley:
+          WHITE = (255, 255, 255)
+          GREEN = (0, 255, 0)
+          RED = (255, 0, 0)
+          YELLOW = (255, 255, 0)
+          BLUE = (0, 0, 255) # Add this line
+          BLANK = (0, 0, 0)
 
   2. **Usage of Color Variables:**
 
      1. In which classes are the color variables used?
-        > Your answer here
+        > Smiley, Happy and Sad classes
 
   3. **Simple Method to Change Colors:**
   4. What is the easiest way you can think to change the smileys to green? Easiest, not necessarily the best!
-     > Your answer here
+     > The easiest way is to modify a single variable in the __init__ method of the smiley.py file. which Y = self.YELLOW to Y = self.GREEN
 
 
 
@@ -301,6 +308,7 @@ Include a screenshot of the sad smiley or the modified `main.py`:
   2. **Refactor subclasses to use the `complexion` method:** Modify any subclass that directly accesses the color variable to instead utilize the new `complexion` method. This ensures that color handling is centralized and can be easily modified in the future.
 
   3. **Determine the applicable Object-Oriented principle:** Consider whether Abstraction, Polymorphism, Inheritance, or Encapsulation best applies to the modifications made in this step.
+  > Encapsulation. By replacing direct variable access with a method (complexion), we are encapsulating the internal state of the object. This allows us to change how the color is determined without breaking other parts of the code that rely on it.
 
   4. **Verify the implementation:** Ensure that the modifications function as expected. The smileys should still display in yellow, confirming that the new method correctly replaces the direct color references.
 
